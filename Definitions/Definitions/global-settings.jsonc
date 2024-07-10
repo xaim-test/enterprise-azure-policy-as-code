@@ -1,0 +1,17 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/global-settings-schema.json",
+    "pacOwnerId": "ef170b46-98a4-4066-85a6-c0a9fefd32a4",
+    "pacEnvironments": [
+        {
+            "pacSelector": "platform",
+            "cloud": "AzureCloud",
+            "tenantId": "<tenant_id>",
+            "deploymentRootScope": "/subscriptions/<subscription_id>",
+            "managedIdentityLocation": "eastus2",
+            "desiredState": {
+                "strategy": "ownedOnly",
+                "keepDfcSecurityAssignments": true
+            }
+        }
+    ]
+}

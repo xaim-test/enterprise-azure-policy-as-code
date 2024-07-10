@@ -1,0 +1,91 @@
+{
+  "nodeName": "/root",
+  "definitionEntry": {
+    "policySetName": "2f706868-f12f-4623-a5dd-882f1a4d17e7",
+    "displayName": "[Network] Deploy Private Link DNS Configuration (EPAC)",
+  },
+  "assignment": {
+    "name": "dine-network-private-dns-zones-registration",
+    "displayName": "[Network] Deploy Private Link DNS Configuration (EPAC)",
+    "description": "This Policy auto deploys Private DNS Configuration for Private Link Endpoints.",
+  },
+  "parameters": {
+    "azureFileSyncDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.afs.azure.net",
+    "AzureSiteRecoveryDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.siterecovery.windowsazure.com",
+    "AppServiceAppDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.azurewebsites.net",
+    "StorageBlobDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.blob.core.windows.net",
+    "StorageFileDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.file.core.windows.net",
+    "StorageQueueDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.queue.core.windows.net",
+    "StorageTableDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.table.core.windows.net",
+    "AzureStorageWebDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.web.core.windows.net",
+    "DataFactoryDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.datafactory.azure.net",
+    "DataFactoryPortalDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.adf.azure.com",
+    "KeyVaultDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.vaultcore.azure.net",
+    "managedHSMDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.managedhsm.azure.net",
+    "AzureSQLDatabaseDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.database.windows.net",
+    "AzureAutomationDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.azure-automation.net",
+    "AzureContainerRegistryDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.azurecr.io",
+    // New Zones
+    // "AzureBatchDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/centralus.privatelink.batch.azure.com",
+    // "AzureMicroservicesDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/private.azuremicroservices.io",
+    // "AzureStaticApps1DNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.3.azurestaticapps.net",
+    // "AzureStaticApps2DNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.5.azurestaticapps.net",
+    // "AzureMLDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.api.azureml.ms",
+    // "AzureAppConfigurationDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.azconfig.io",
+    // "AzureAPIManagementDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.azure-api.net",
+    // "AzureIoTHubDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.azure-devices.net",
+    // "AzureDatabricksDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.azuredatabricks.net",
+    // "AzureHDInsightDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.azurehdinsight.net",
+    // "AzureStaticApps3DNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.azurestaticapps.net",
+    // "CassandraCosmosDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.cassandra.cosmos.azure.com",
+    // "CentralUSAKS1DNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.centralus.azmk8s.io",
+    // "CentralUSKustoDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.centralus.kusto.windows.net",
+    // "CentralUSPrometheusDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.centralus.prometheus.monitor.azure.com",
+    // "CognitiveServicesDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.cognitiveservices.azure.com",
+    // "SynapseDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.dev.azuresynapse.net",
+    // "AzureDataLakeStorageDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.dfs.core.windows.net",
+    // "CosmosDBDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.documents.azure.com",
+    // "KubernetesConfigDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.dp.kubernetesconfiguration.azure.com",
+    // "EastUS2AKS1DNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.eastus2.azmk8s.io",
+    // "EastUS2KustoDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.eastus2.kusto.windows.net",
+    // "EastUS2PrometheusDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.eastus2.prometheus.monitor.azure.com",
+    // "EventGridDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.eventgrid.azure.net",
+    // "GrafanaDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.grafana.azure.com",
+    // "GremlinCosmosDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.gremlin.cosmos.azure.com",
+    // "GuestConfigurationDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.guestconfiguration.azure.com",
+    // "HealthcareInnovationDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.his.arc.azure.com",
+    // "MariaDBDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.mariadb.database.azure.com",
+    // "MongoDBDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.mongo.cosmos.azure.com",
+    // "MySQLDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.mysql.database.azure.com",
+    // "AzureNotebooksDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.notebooks.azure.net",
+    // "OpenAIDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.openai.azure.com",
+    // "PostgreSQLDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.postgres.database.azure.com",
+    // "PurviewDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.purview.azure.com",
+    // "PurviewStudioDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.purviewstudio.azure.com",
+    // "RedisCacheDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.redis.cache.windows.net",
+    // "SearchDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.search.windows.net",
+    // "ServiceBusDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.servicebus.windows.net",
+    // "AzureSynapseSQLDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.sql.azuresynapse.net",
+    // "CosmosDBSQLAPIDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.sqlx.cosmos.azure.com",
+    // "CosmosDBTableDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.table.cosmos.azure.com",
+    // "WestUSPrometheusDNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.westus.prometheus.monitor.azure.com",
+    // "WestUS3AKS1DNSZone": "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Network/privateDnsZones/privatelink.westus3.azmk8s.io"
+  },
+  "userAssignedIdentity": {
+    // For single definitionEntry or when using the same identity for all definitions being assigned
+    "*": "/subscriptions/3b0cb6b1-a205-4dbd-824d-3f96f0feed37/resourcegroups/northeurope-fxe-gemini-eu-uat-network-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uai-epac-dine-register-fxops-dns",
+  },
+  "additionalRoleAssignments": {
+    "*": [
+      {
+        "roleDefinitionId": "/providers/microsoft.authorization/roleDefinitions/4d97b98b-1d4f-4787-a291-c67834d212e7",
+        "scope": "/subscriptions/3b0cb6b1-a205-4dbd-824d-3f96f0feed37"
+      }
+    ],
+  },
+  "scope": {
+    "gemini-eu-uat": [
+      "/subscriptions/3b0cb6b1-a205-4dbd-824d-3f96f0feed37"
+    ]
+  },
+}
