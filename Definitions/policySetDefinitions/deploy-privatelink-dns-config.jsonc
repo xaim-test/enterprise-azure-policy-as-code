@@ -1,280 +1,163 @@
 {
-  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-set-definition-schema.json",
-  "name": "2f706868-f12f-4623-a5dd-882f1a4d17e7",
-  "properties": {
-      "displayName": "[Network] Deploy Private Link DNS Configuration (EPAC)",
-      "description": "This initiative contains the policies necessary auto deploy Private DNS Configuration for Private Link Endpoints.",
-      "metadata": {
-          "version": "1.0.0",
-          "category": "Network"
-      },
-      "parameters": {
-          "azureFileSyncDNSZone": {
-              "type": "String"
-          },
-          "AzureSiteRecoveryDNSZone": {
-              "type": "String"
-          },
-          "AppServiceAppDNSZone": {
-              "type": "String"
-          },
-          "StorageBlobDNSZone": {
-              "type": "String"
-          },
-          "StorageFileDNSZone": {
-              "type": "String"
-          },
-          "StorageQueueDNSZone": {
-              "type": "String"
-          },
-          "StorageTableDNSZone": {
-              "type": "String"
-          },
-          "AzureStorageWebDNSZone": {
-              "type": "String"
-          },
-          "DataFactoryDNSZone": {
-              "type": "String"
-          },
-          "DataFactoryPortalDNSZone": {
-              "type": "String"
-          },
-          "KeyVaultDNSZone": {
-              "type": "String"
-          },
-          "managedHSMDNSZone": {
-              "type": "String"
-          },
-          "AzureSQLDatabaseDNSZone": {
-              "type": "String"
-          },
-          "AzureAutomationDNSZone": {
-              "type": "String"
-          },
-          "AzureContainerRegistryDNSZone": {
-              "type": "String"
-          }
-      },
-      "policyDefinitions": [
-          {
-              "policyDefinitionReferenceId": "Private Link DNS - Azure File Sync",
-              "policyDefinitionName": "c0e2f9e2-c21d-4197-a54d-4a0c38738704",
-              "parameters": {
-                  "privateDnsZoneId": {
-                      "value": "[parameters('azureFileSyncDNSZone')]"
-                  },
-                  "privateLinkServiceId": {
-                      "value": "Microsoft.Storage/storageAccounts"
-                  },
-                  "privateEndpointGroupId": {
-                      "value": "afs"
-                  }
-              }
-          },
-          {
-              "policyDefinitionReferenceId": "Private Link DNS - Azure Site Recovery",
-              "policyDefinitionName": "c0e2f9e2-c21d-4197-a54d-4a0c38738704",
-              "parameters": {
-                  "privateDnsZoneId": {
-                      "value": "[parameters('AzureSiteRecoveryDNSZone')]"
-                  },
-                  "privateLinkServiceId": {
-                      "value": "Microsoft.RecoveryServices/vaults"
-                  },
-                  "privateEndpointGroupId": {
-                      "value": "AzureSiteRecovery"
-                  }
-              }
-          },
-          {
-              "policyDefinitionReferenceId": "Private Link DNS - App Service Apps",
-              "policyDefinitionName": "c0e2f9e2-c21d-4197-a54d-4a0c38738704",
-              "parameters": {
-                  "privateDnsZoneId": {
-                      "value": "[parameters('AppServiceAppDNSZone')]"
-                  },
-                  "privateLinkServiceId": {
-                      "value": "Microsoft.Web/sites"
-                  },
-                  "privateEndpointGroupId": {
-                      "value": "sites"
-                  }
-              }
-          },
-          {
-              "policyDefinitionReferenceId": "Private Link DNS - Storage Blob",
-              "policyDefinitionName": "c0e2f9e2-c21d-4197-a54d-4a0c38738704",
-              "parameters": {
-                  "privateDnsZoneId": {
-                      "value": "[parameters('StorageBlobDNSZone')]"
-                  },
-                  "privateLinkServiceId": {
-                      "value": "Microsoft.Storage/storageAccounts"
-                  },
-                  "privateEndpointGroupId": {
-                      "value": "blob"
-                  }
-              }
-          },
-          {
-              "policyDefinitionReferenceId": "Private Link DNS - Storage File",
-              "policyDefinitionName": "c0e2f9e2-c21d-4197-a54d-4a0c38738704",
-              "parameters": {
-                  "privateDnsZoneId": {
-                      "value": "[parameters('StorageFileDNSZone')]"
-                  },
-                  "privateLinkServiceId": {
-                      "value": "Microsoft.Storage/storageAccounts"
-                  },
-                  "privateEndpointGroupId": {
-                      "value": "file"
-                  }
-              }
-          },
-          {
-              "policyDefinitionReferenceId": "Private Link DNS - Storage Queue",
-              "policyDefinitionName": "c0e2f9e2-c21d-4197-a54d-4a0c38738704",
-              "parameters": {
-                  "privateDnsZoneId": {
-                      "value": "[parameters('StorageQueueDNSZone')]"
-                  },
-                  "privateLinkServiceId": {
-                      "value": "Microsoft.Storage/storageAccounts"
-                  },
-                  "privateEndpointGroupId": {
-                      "value": "queue"
-                  }
-              }
-          },
-          {
-              "policyDefinitionReferenceId": "Private Link DNS - Azure Storage Table",
-              "policyDefinitionName": "c0e2f9e2-c21d-4197-a54d-4a0c38738704",
-              "parameters": {
-                  "privateDnsZoneId": {
-                      "value": "[parameters('StorageTableDNSZone')]"
-                  },
-                  "privateLinkServiceId": {
-                      "value": "Microsoft.Storage/storageAccounts"
-                  },
-                  "privateEndpointGroupId": {
-                      "value": "table"
-                  }
-              }
-          },
-          {
-              "policyDefinitionReferenceId": "Private Link DNS - Azure Storage Web",
-              "policyDefinitionName": "c0e2f9e2-c21d-4197-a54d-4a0c38738704",
-              "parameters": {
-                  "privateDnsZoneId": {
-                      "value": "[parameters('AzureStorageWebDNSZone')]"
-                  },
-                  "privateLinkServiceId": {
-                      "value": "Microsoft.Storage/storageAccounts"
-                  },
-                  "privateEndpointGroupId": {
-                      "value": "web"
-                  }
-              }
-          },
-          {
-              "policyDefinitionReferenceId": "Private Link DNS - Data Factory",
-              "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/86cd96e1-1745-420d-94d4-d3f2fe415aa4",
-              "parameters": {
-                  "privateDnsZoneId": {
-                      "value": "[parameters('DataFactoryDNSZone')]"
-                  },
-                  "listOfGroupIds": {
-                      "value": ["dataFactory"]
-                  }
-              }
-          },
-          {
-              "policyDefinitionReferenceId": "Private Link DNS - Data Factory Portal",
-              "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/86cd96e1-1745-420d-94d4-d3f2fe415aa4",
-              "parameters": {
-                  "privateDnsZoneId": {
-                      "value": "[parameters('DataFactoryPortalDNSZone')]"
-                  },
-                  "listOfGroupIds": {
-                      "value": ["portal"]
-                  }
-              }
-          },
-          {
-              "policyDefinitionReferenceId": "Private Link DNS - Key Vault",
-              "policyDefinitionName": "c0e2f9e2-c21d-4197-a54d-4a0c38738704",
-              "parameters": {
-                  "privateDnsZoneId": {
-                      "value": "[parameters('KeyVaultDNSZone')]"
-                  },
-                  "privateLinkServiceId": {
-                      "value": "Microsoft.KeyVault/vaults"
-                  },
-                  "privateEndpointGroupId": {
-                      "value": "vault"
-                  }
-              }
-          },
-          {
-              "policyDefinitionReferenceId": "Private Link DNS - Key Vault Managed HSM",
-              "policyDefinitionName": "c0e2f9e2-c21d-4197-a54d-4a0c38738704",
-              "parameters": {
-                  "privateDnsZoneId": {
-                      "value": "[parameters('managedHSMDNSZone')]"
-                  },
-                  "privateLinkServiceId": {
-                      "value": "Microsoft.KeyVault/managedHSMs"
-                  },
-                  "privateEndpointGroupId": {
-                      "value": "managedhsm"
-                  }
-              }
-          },
-          {
-              "policyDefinitionReferenceId": "Private Link DNS - Azure SQL Database",
-              "policyDefinitionName": "c0e2f9e2-c21d-4197-a54d-4a0c38738704",
-              "parameters": {
-                  "privateDnsZoneId": {
-                      "value": "[parameters('AzureSQLDatabaseDNSZone')]"
-                  },
-                  "privateLinkServiceId": {
-                      "value": "Microsoft.Sql/servers"
-                  },
-                  "privateEndpointGroupId": {
-                      "value": "sqlServer"
-                  }
-              }
-          },
-          {
-              "policyDefinitionReferenceId": "Private Link DNS - Azure Automation",
-              "policyDefinitionName": "c0e2f9e2-c21d-4197-a54d-4a0c38738704",
-              "parameters": {
-                  "privateDnsZoneId": {
-                      "value": "[parameters('AzureAutomationDNSZone')]"
-                  },
-                  "privateLinkServiceId": {
-                      "value": "Microsoft.Automation/automationAccounts"
-                  },
-                  "privateEndpointGroupId": {
-                      "value": "Webhook"
-                  }
-              }
-          },
-          {
-              "policyDefinitionReferenceId": "Private Link DNS - Azure Container Registry",
-              "policyDefinitionName": "c0e2f9e2-c21d-4197-a54d-4a0c38738704",
-              "parameters": {
-                  "privateDnsZoneId": {
-                      "value": "[parameters('AzureContainerRegistryDNSZone')]"
-                  },
-                  "privateLinkServiceId": {
-                      "value": "Microsoft.ContainerRegistry/registries"
-                  },
-                  "privateEndpointGroupId": {
-                      "value": "registry"
-                  }
-              }
-          }      
-      ]
-  }
+    "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-set-definition-schema.json",
+    "name": "2f706868-f12f-4623-a5dd-882f1a4d17e7",
+    "properties": {
+        "displayName": "[Network] Deploy Private Link DNS Configuration (EPAC)",
+        "description": "This initiative contains the policies necessary auto deploy Private DNS Configuration for Private Link Endpoints.",
+        "metadata": {
+            "version": "1.0.0",
+            "category": "Network"
+        },
+        "parameters": {
+            "AppServiceAppDNSZone": {
+                "type": "String"
+            },
+            "StorageBlobDNSZone": {
+                "type": "String"
+            },
+            "CosmosDBDNSZone": {
+                "type": "String"
+            },
+            "StorageFileDNSZone": {
+                "type": "String"
+            },
+            "OpenAIDNSZone": {
+                "type": "String"
+            },
+            "StorageQueueDNSZone": {
+                "type": "String"
+            },
+            "SearchDNSZone": {
+                "type": "String"
+            },
+            "StorageTableDNSZone": {
+                "type": "String"
+            },
+            "KeyVaultDNSZone": {
+                "type": "String"
+            }
+        },
+        "policyDefinitions": [
+            {
+                "policyDefinitionReferenceId": "Private Link DNS - App Service Apps",
+                "policyDefinitionName": "c0e2f9e2-c21d-4197-a54d-4a0c38738704",
+                "parameters": {
+                    "privateDnsZoneId": {
+                        "value": "[parameters('AppServiceAppDNSZone')]"
+                    },
+                    "privateLinkServiceId": {
+                        "value": "Microsoft.Web/sites"
+                    },
+                    "privateEndpointGroupId": {
+                        "value": "sites"
+                    }
+                }
+            },
+            {
+                "policyDefinitionReferenceId": "Private Link DNS - Storage Blob",
+                "policyDefinitionName": "c0e2f9e2-c21d-4197-a54d-4a0c38738704",
+                "parameters": {
+                    "privateDnsZoneId": {
+                        "value": "[parameters('StorageBlobDNSZone')]"
+                    },
+                    "privateLinkServiceId": {
+                        "value": "Microsoft.Storage/storageAccounts"
+                    },
+                    "privateEndpointGroupId": {
+                        "value": "blob"
+                    }
+                }
+            },
+            {
+                "policyDefinitionReferenceId": "Private Link DNS - Cosmos DB",
+                "policyDefinitionName": "c0e2f9e2-c21d-4197-a54d-4a0c38738704",
+                "parameters": {
+                    "privateDnsZoneId": {
+                        "value": "[parameters('CosmosDBDNSZone')]"
+                    },
+                    "privateLinkServiceId": {
+                        "value": "Microsoft.DocumentDB/databaseAccounts"
+                    },
+                    "privateEndpointGroupId": {
+                        "value": "cosmosDB"
+                    }
+                }
+            },
+            {
+                "policyDefinitionReferenceId": "Private Link DNS - Storage File",
+                "policyDefinitionName": "c0e2f9e2-c21d-4197-a54d-4a0c38738704",
+                "parameters": {
+                    "privateDnsZoneId": {
+                        "value": "[parameters('StorageFileDNSZone')]"
+                    },
+                    "privateLinkServiceId": {
+                        "value": "Microsoft.Storage/storageAccounts"
+                    },
+                    "privateEndpointGroupId": {
+                        "value": "file"
+                    }
+                }
+            },
+            {
+                "policyDefinitionReferenceId": "Private Link DNS - Open AI",
+                "policyDefinitionName": "c0e2f9e2-c21d-4197-a54d-4a0c38738704",
+                "parameters": {
+                    "privateDnsZoneId": {
+                        "value": "[parameters('OpenAIDNSZone')]"
+                    },
+                    "privateLinkServiceId": {
+                        "value": "Microsoft.CognitiveServices/accounts"
+                    },
+                    "privateEndpointGroupId": {
+                        "value": "openAI"
+                    }
+                }
+            },
+            {
+                "policyDefinitionReferenceId": "Private Link DNS - Storage Queue",
+                "policyDefinitionName": "c0e2f9e2-c21d-4197-a54d-4a0c38738704",
+                "parameters": {
+                    "privateDnsZoneId": {
+                        "value": "[parameters('StorageQueueDNSZone')]"
+                    },
+                    "privateLinkServiceId": {
+                        "value": "Microsoft.Storage/storageAccounts"
+                    },
+                    "privateEndpointGroupId": {
+                        "value": "queue"
+                    }
+                }
+            },
+            {
+                "policyDefinitionReferenceId": "Private Link DNS - Search Service",
+                "policyDefinitionName": "c0e2f9e2-c21d-4197-a54d-4a0c38738704",
+                "parameters": {
+                    "privateDnsZoneId": {
+                        "value": "[parameters('SearchDNSZone')]"
+                    },
+                    "privateLinkServiceId": {
+                        "value": "Microsoft.Search/searchServices"
+                    },
+                    "privateEndpointGroupId": {
+                        "value": "search"
+                    }
+                }
+            },
+            {
+                "policyDefinitionReferenceId": "Private Link DNS - Azure Storage Table",
+                "policyDefinitionName": "c0e2f9e2-c21d-4197-a54d-4a0c38738704",
+                "parameters": {
+                    "privateDnsZoneId": {
+                        "value": "[parameters('StorageTableDNSZone')]"
+                    },
+                    "privateLinkServiceId": {
+                        "value": "Microsoft.Storage/storageAccounts"
+                    },
+                    "privateEndpointGroupId": {
+                        "value": "table"
+                    }
+                }
+            }
+        ]
+    }
 }

@@ -3,7 +3,7 @@
     "pacOwnerId": "ef170b46-98a4-4066-85a6-c0a9fefd32a4",
     "pacEnvironments": [
         {
-            "pacSelector": "platform",
+            "pacSelector": "tenant",
             "cloud": "AzureCloud",
             "tenantId": "2aa4913e-d008-4744-9e93-ce98444e40f9",
             "deploymentRootScope": "/subscriptions/2e15e5e9-6c07-4b08-8e6f-d2033e329b52",
