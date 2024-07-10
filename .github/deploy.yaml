@@ -1,14 +1,15 @@
 # This pipeline is used to deploy Policies, Initiative definitions and Assignments into Azure.
-name: EPAC Dev Workflow
+name: EPAC Tenant Workflow
 
 on:
-  push:
+  pull_request:
     branches:
-      - feature/**
+      - main
+    types:
+      - closed
     paths:
       - 'Definitions/**'
-      - '.github/**'
-  workflow_dispatch:
+  manual_dispatch:
 
 env:
   PAC_OUTPUT_FOLDER: ./Output
@@ -20,46 +21,35 @@ permissions:
 
 jobs:
   plan:
-    name: Plan epac-dev
+    name: Plan tenant
     uses: ./workflows/plan.yml
     with:
-      pacEnvironmentSelector: epac-dev
-      planGitHubEnvironment: PAC-DEV
+      pacEnvironmentSelector: tenant
+      planGitHubEnvironment: TENANT-PLAN
       PAC_OUTPUT_FOLDER: ./Output
       PAC_DEFINITIONS_FOLDER: ./Definitions
     secrets: inherit
 
   deployPolicy:
-    name: Deploy epac-dev Policy Changes
+    name: Deploy tenant Policy Changes
     needs: plan
-    if: needs.plan.outputs.deployPolicyChanges == 'yes'
-    uses: ./.github/workflows/deploy-policy.yml
+    if: needs.plan.outputs.deployPolicyChanges == 'yes' && github.ref == 'refs/heads/main'
+    uses: ./workflows/deploy-policy.yml
     with:
-      pacEnvironmentSelector: epac-dev
-      planGitHubEnvironment: PAC-DEV
+      pacEnvironmentSelector: tenant
+      planGitHubEnvironment: TENANT-DEPLOY-POLICY
       PAC_INPUT_FOLDER: ./Output
       PAC_DEFINITIONS_FOLDER: ./Definitions
     secrets: inherit
 
   deployRoles:
-    name: Deploy epac-dev Role Changes
+    name: Deploy tenant Role Changes
     needs: plan
-    if: needs.plan.outputs.deployRoleChanges == 'yes'
-    uses: ./.github/workflows/deploy-roles.yml
-    with:
-      pacEnvironmentSelector: epac-dev
-      planGitHubEnvironment: PAC-DEV
-      PAC_INPUT_FOLDER: ./Output
-      PAC_DEFINITIONS_FOLDER: ./Definitions
-    secrets: inherit
-
-  tenantPlan:
-    name: Plan tenant
-    needs: [deployPolicy, deployRoles]
-    uses: ./.github/workflows/plan.yml
+    if: needs.plan.outputs.deployRoleChanges == 'yes' && github.ref == 'refs/heads/main'
+    uses: ./workflows/deploy-roles.yml
     with:
       pacEnvironmentSelector: tenant
-      planGitHubEnvironment: TENANT-PLAN
-      PAC_OUTPUT_FOLDER: ./Output
+      planGitHubEnvironment: TENANT-DEPLOY-ROLES
+      PAC_INPUT_FOLDER: ./Output
       PAC_DEFINITIONS_FOLDER: ./Definitions
     secrets: inherit
