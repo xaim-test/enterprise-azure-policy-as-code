@@ -10,8 +10,6 @@
     "description": "This Policy auto deploys Private DNS Configuration for Private Link Endpoints.",
   },
   "parameters": {
-    
-    
     "AppServiceAppDNSZone": "/subscriptions/2e15e5e9-6c07-4b08-8e6f-d2033e329b52/resourceGroups/rg-core-ai-private-dns-eastus2-dev/providers/Microsoft.Network/privateDnsZones/privatelink.azurewebsites.net",
     "StorageBlobDNSZone": "/subscriptions/2e15e5e9-6c07-4b08-8e6f-d2033e329b52/resourceGroups/rg-core-ai-private-dns-eastus2-dev/providers/Microsoft.Network/privateDnsZones/privatelink.blob.core.windows.net",
     "CosmosDBDNSZone": "/subscriptions/2e15e5e9-6c07-4b08-8e6f-d2033e329b52/resourceGroups/rg-core-ai-private-dns-eastus2-dev/providers/Microsoft.Network/privateDnsZones/privatelink.documents.azure.com",
@@ -21,7 +19,6 @@
     "SearchDNSZone": "/subscriptions/2e15e5e9-6c07-4b08-8e6f-d2033e329b52/resourceGroups/rg-core-ai-private-dns-eastus2-dev/providers/Microsoft.Network/privateDnsZones/privatelink.search.windows.net",
     "StorageTableDNSZone": "/subscriptions/2e15e5e9-6c07-4b08-8e6f-d2033e329b52/resourceGroups/rg-core-ai-private-dns-eastus2-dev/providers/Microsoft.Network/privateDnsZones/privatelink.table.core.windows.net",
     "KeyVaultDNSZone": "/subscriptions/2e15e5e9-6c07-4b08-8e6f-d2033e329b52/resourceGroups/rg-core-ai-private-dns-eastus2-dev/providers/Microsoft.Network/privateDnsZones/privatelink.vaultcore.azure.net",
-    
     // "azureFileSyncDNSZone": "/subscriptions/2e15e5e9-6c07-4b08-8e6f-d2033e329b52/resourceGroups/rg-core-ai-private-dns-eastus2-dev/providers/Microsoft.Network/privateDnsZones/privatelink.afs.azure.net",
     // "AzureSiteRecoveryDNSZone": "/subscriptions/2e15e5e9-6c07-4b08-8e6f-d2033e329b52/resourceGroups/rg-core-ai-private-dns-eastus2-dev/providers/Microsoft.Network/privateDnsZones/privatelink.siterecovery.windowsazure.com",
     // "AzureStorageWebDNSZone": "/subscriptions/2e15e5e9-6c07-4b08-8e6f-d2033e329b52/resourceGroups/rg-core-ai-private-dns-eastus2-dev/providers/Microsoft.Network/privateDnsZones/privatelink.web.core.windows.net",
@@ -74,6 +71,9 @@
     // "WestUSPrometheusDNSZone": "/subscriptions/2e15e5e9-6c07-4b08-8e6f-d2033e329b52/resourceGroups/rg-core-ai-private-dns-eastus2-dev/providers/Microsoft.Network/privateDnsZones/privatelink.westus.prometheus.monitor.azure.com",
     // "WestUS3AKS1DNSZone": "/subscriptions/2e15e5e9-6c07-4b08-8e6f-d2033e329b52/resourceGroups/rg-core-ai-private-dns-eastus2-dev/providers/Microsoft.Network/privateDnsZones/privatelink.westus3.azmk8s.io"
   },
+  "managedIdentityLocations": {
+    "*": "eastus2"
+  },
   "additionalRoleAssignments": {
     "*": [
       {
@@ -81,5 +81,10 @@
         "scope": "/subscriptions/2e15e5e9-6c07-4b08-8e6f-d2033e329b52"
       }
     ],
+  },
+  "scope": {
+    "tenant": [
+      "/subscriptions/2e15e5e9-6c07-4b08-8e6f-d2033e329b52"
+    ]
   },
 }
