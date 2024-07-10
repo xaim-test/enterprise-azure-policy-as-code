@@ -74,14 +74,6 @@
   "managedIdentityLocations": {
     "*": "eastus2"
   },
-  "additionalRoleAssignments": {
-    "*": [
-      {
-        "roleDefinitionId": "/providers/microsoft.authorization/roleDefinitions/4d97b98b-1d4f-4787-a291-c67834d212e7",
-        "scope": "/subscriptions/2e15e5e9-6c07-4b08-8e6f-d2033e329b52"
-      }
-    ],
-  },
   "scope": {
     "tenant": [
       "/subscriptions/2e15e5e9-6c07-4b08-8e6f-d2033e329b52"
