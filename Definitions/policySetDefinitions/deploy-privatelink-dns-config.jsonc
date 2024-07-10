@@ -157,6 +157,21 @@
                         "value": "table"
                     }
                 }
+            },
+            {
+                "policyDefinitionReferenceId": "Private Link DNS - Key Vault",
+                "policyDefinitionName": "c0e2f9e2-c21d-4197-a54d-4a0c38738704",
+                "parameters": {
+                    "privateDnsZoneId": {
+                        "value": "[parameters('KeyVaultDNSZone')]"
+                    },
+                    "privateLinkServiceId": {
+                        "value": "Microsoft.KeyVault/vaults"
+                    },
+                    "privateEndpointGroupId": {
+                        "value": "keyVault"
+                    }
+                }
             }
         ]
     }
