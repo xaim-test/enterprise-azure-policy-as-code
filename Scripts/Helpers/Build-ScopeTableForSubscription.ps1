@@ -27,6 +27,9 @@ function Build-ScopeTableForSubscription {
 
     #region build scope details
     $thisNotScope = $null
+    if ($PacEnvironment.desiredState.excludeSubscriptions) {
+        $IsExcluded = $true
+    }
     if ($null -ne $ParentScopeDetails) {
         # the root node is never not in scope or excluded
         if (!$IsInGlobalNotScope) {
@@ -105,7 +108,7 @@ function Build-ScopeTableForSubscription {
     }
     #endregion augment resource groups scope details
 
-    #region augemnt this parents scope's details with this subscription's details
+    #region augment this parents scope's details with this subscription's details
     if ($null -ne $ParentScopeDetails) {
         $parentScopeChildrenTable = $ParentScopeDetails.childrenTable
         $parentScopeResourceGroupsTable = $ParentScopeDetails.resourceGroupsTable
@@ -131,7 +134,7 @@ function Build-ScopeTableForSubscription {
             $null = $parentScopeExcludedScopesTable.Add($excludedScope, $excludedScopesTable.$excludedScope)
         }
     }
-    #endregion augemnt this parents scope's details with this subscription's details
+    #endregion augment this parents scope's details with this subscription's details
 
     return $scopeDetails
 }

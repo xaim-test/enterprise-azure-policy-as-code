@@ -2,6 +2,10 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "properties": {
+        "$schema": {
+            "type": "string",
+            "description": "The schema to verify this document against."
+        },
         "pacOwnerId": {
             "type": "string"
         },
@@ -47,6 +51,9 @@
                         },
                         "deploymentRootScope": {
                             "type": "string"
+                        },
+                        "skipResourceValidationForExemptions": {
+                            "type": "boolean"
                         },
                         "defaultContext": {
                             "type": "string"
@@ -106,6 +113,9 @@
                                             "type": "string"
                                         }
                                     ]
+                                },
+                                "excludeSubscriptions": {
+                                    "type": "boolean"
                                 }
                             },
                             "additionalProperties": false,

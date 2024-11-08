@@ -128,7 +128,7 @@ To deploy the ALZ policies using EPAC follow the steps below.
     New-HydrationDefinitionFolder -DefinitionsRootFolder .\Definitions
     ```
 
-3. Update the `global-settings.json` file in the Definitions folder as described [here](definitions-and-global-settings.md#global-settings)
+3. Update the `global-settings.json` file in the Definitions folder as described [here](settings-global-setting-file.md)
 
 4. Synchronize the policies from the upstream repository. You should ensure that you are running the latest version of the EPAC module before running this script each time.
 
@@ -182,8 +182,8 @@ To deploy the ALZ policies using EPAC follow the steps below.
 
 6. Update assignment parameters.
 
-> [!WARNING] 
-> Carefully review the parameters and policies deployed as they have recently changed. Review each asssignment file carefully and ensure all parameter values are completed. Due to changes in usage of the Azure Monitor Agent - there are some Data Collection Rules that must be deployed prior to assigning the policies - the source for these DCRs are provided in the assignment file parameter comments. 
+> [!WARNING]
+> Carefully review the parameters and policies deployed as they have recently changed. Review each assignment file carefully and ensure all parameter values are completed. Due to changes in usage of the Azure Monitor Agent - there are some Data Collection Rules that must be deployed prior to assigning the policies - the source for these DCRs are provided in the assignment file parameter comments.
 
     Several of the assignment files also have parameters which need to be in place. Pay attention to the requirements about having a Log Analytics workspace deployed prior to assigning these policies as it is a requirement for several of the assignments. Less generic parameters are also available for modification in the assignment files.
 
@@ -191,7 +191,7 @@ To deploy the ALZ policies using EPAC follow the steps below.
 
 ## Keeping up to date with changes manually
 
-The Azure Landing Zone deployment contains a number of policies which help provide guardrails to an environment, and the team which works on these policies is always providing updates to the original content to keep in line with Microsoft best practice and road map. The EPAC solution contains a function to help synchronize changes from the upstream project
+The Azure Landing Zone deployment contains several policies that help provide guardrails to an environment, and the team that works on these policies is always providing updates to the original content to keep in line with Microsoft's best practices and road maps. The EPAC solution contains a function to help synchronize changes from the upstream project.
 
 To pull the latest changes from the upstream repository - use the code below.
 
@@ -202,19 +202,19 @@ Sync-ALZPolicies -DefinitionsRootFolder .\Definitions -CloudEnvironment AzureClo
 Carefully review the proposed changes before deploying them. It is best to make sure you're project is stored in source control so you can easily see which files have changed before deployment.
 
 > [!WARNING]
-> If you have follow Scenario 1 above, the first time you run the `Sync-ALZPolicies` there will be many changes recorded due to formatting. Review the files completely before deploying.
+> If you have followed Scenario 1 above, the first time you run the `Sync-ALZPolicies`, there will be many changes recorded due to formatting. Review the files completely before deploying.
 
 > [!WARNING]
 > Assignments deployed via the ALZ accelerators are kept in sync with the EnterprisePolicyAsCode module so ensure you have the latest PowerShell module installed before running `Sync-ALZPolicies`
 
 > [!TIP]
-> Rename or copy the default ALZ assignment files - when you do a sync it makes it easier to compare changes.
+> Rename or copy the default ALZ assignment files - when you do a sync, it makes it easier to compare changes.
 
 ## Keeping up to date with GitHub Actions
 
 There is a GitHub action workflow which executes the above script. The process for configuring it is below.
 
-1. Copy the `alz-sync.yaml` file from [here](https://github.com/Azure/enterprise-azure-policy-as-code/blob/main/StarterKit/Pipelines/GitHubActions/.github/workflows/alz-sync.yaml) to `.github\workflows\alz-sync.yaml` in your repository.
+1. Copy the `alz-sync.yaml` file from [here](https://github.com/Azure/enterprise-azure-policy-as-code/blob/main/StarterKit/Pipelines/GitHubActions/alz-sync.yaml) to `.github\workflows\alz-sync.yaml` in your repository.
 2. Update the `env:` section with details below
 
     | Environment Variable Name | Value | Notes |

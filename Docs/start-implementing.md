@@ -10,11 +10,11 @@ The following steps are required to implement Enterprise Policy as Code (EPAC) i
 1. Understand [concepts and environments](#epac-concepts-and-environments).
 2. Determine [desired state strategy](settings-desired-state.md).
 3. How to handle [Defender for Cloud Policy Assignments](settings-dfc-assignments.md).
-7. Design your [CI/CD process](ci-cd-overview.md).
-4. Install [Powershell and EPAC](#install-powershell-and-epac).
-5. Create your [`Definitions` folder and subfolders](#create-the-definitions-folder).
-6. Populate `global-settings.jsonc` with your [environment settings](settings-global-setting-file.md) and [desired state strategy](settings-dfc-assignments.md).
-7. Populate your Definitions folder with Policy resources.
+4. Design your [CI/CD process](ci-cd-overview.md).
+5. Install [Powershell and EPAC](#install-powershell-and-epac).
+6. Create your [`Definitions` folder and subfolders](#create-the-definitions-folder).
+7. Populate `global-settings.jsonc` with your [environment settings](settings-global-setting-file.md) and [desired state strategy](settings-dfc-assignments.md).
+8. Populate your Definitions folder with Policy resources. (For a folder structure example, please see [StarterKit/Definitions-Common](https://github.com/Azure/enterprise-azure-policy-as-code/tree/main/StarterKit/Definitions-Common))
     - [Option A:] [Extract existing Policy resources](start-extracting-policy-resources.md) from your Azure environment.
     - [Option B:] [Integrate Azure Landing Zones (ALZ)](integrating-with-alz.md).
     - [Option C:] Utilize the [hydration kit](operational-scripts-hydration-kit.md) and `StarterKit` content.
@@ -22,8 +22,8 @@ The following steps are required to implement Enterprise Policy as Code (EPAC) i
     - [Optional] Create custom [Policy Set definitions](policy-set-definitions.md).
     - Create your [Policy Assignments](policy-assignments.md).
     - [Optional] Manage [Policy Exemptions](policy-exemptions.md).
-8. Implement your [CI/CD pipelines](ci-cd-overview.md).
-8. Operate your environment with the provided [operational scripts](operational-scripts.md).
+9. Implement your [CI/CD pipelines](ci-cd-overview.md).
+10. Operate your environment with the provided [operational scripts](operational-scripts.md).
 
 ## EPAC Concepts and Environments
 
@@ -113,18 +113,6 @@ The simplest `global-settings.jsonc` for the above structure is:
 }
 ```
 
-## Cloud Environment with Unsupported/Missing Policy Definitions
-
-In some multi-tenant implementations, not all policies, policy sets, and/or assignments will function in all tenants, usually due to either built-in policies that don't exist in some tenant types or unavailable resource providers.  In order to facilitate multi-tenant deployments in these scenarios, utilize the `epacCloudEnvironments` property to specify which cloud type a specific file should be considered in.  For example in order to have a policy definition deployed only to epacEnvironments that are China cloud tenants, add a metadata property like this to that definition (or definitionSet) file:
-
-```json
-"metadata": {
-  "epacCloudEnvironments": [
-    "AzureChinaCloud"
-  ]
-},
-```
-
 For assignment files, this is a top level property on the assignment's root node:
 
 ```json
@@ -162,14 +150,29 @@ Many scripts use parameters for input and output folders. They default to the cu
 - Create custom Policy Sets (optional) in folder `policySetDefinitions`
 - Define the Policy Assignments in folder `policyAssignments`
 - Define the Policy Exemptions (optional) in folder `policyExemptions`
-- Define Documentation in folder `policyDocumentations]`
+- Define Documentation in folder `policyDocumentations`
 
 ### Create the Definitions folder
 
-Create a new EPAC `Definitions` folder with a number of subfolder and a `global-settings.jsonc` file
+Create a new EPAC `Definitions` folder with a number of subfolder and a `global-settings.jsonc` file.
+
+> [!TIP]
+> For a folder structure example, please see [StarterKit/Definitions-Common](https://github.com/Azure/enterprise-azure-policy-as-code/tree/main/StarterKit/Definitions-Common).
 
 ```ps1
 New-HydrationDefinitionFolder -DefinitionsRootFolder Definitions
+```
+
+## Cloud Environment with Unsupported/Missing Policy Definitions
+
+In some multi-tenant implementations, not all policies, policy sets, and/or assignments will function in all tenants, usually due to either built-in policies that don't exist in some tenant types or unavailable resource providers.  In order to facilitate multi-tenant deployments in these scenarios, utilize the `epacCloudEnvironments` property to specify which cloud type a specific file should be considered in.  For example in order to have a policy definition deployed only to epacEnvironments that are China cloud tenants, add a metadata property like this to that definition (or definitionSet) file:
+
+```json
+"metadata": {
+  "epacCloudEnvironments": [
+    "AzureChinaCloud"
+  ]
+},
 ```
 
 ## Debug EPAC issues

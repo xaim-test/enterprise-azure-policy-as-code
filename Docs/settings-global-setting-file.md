@@ -25,6 +25,7 @@
                 "keepDfcSecurityAssignments": false,
                 "doNotDisableDeprecatedPolicies": false
             },
+            "skipResourceValidationForExemptions": false,
             "managedIdentityLocation": "eastus2"
         },
         {
@@ -37,6 +38,7 @@
                 "keepDfcSecurityAssignments": false,
                 "doNotDisableDeprecatedPolicies": false
             },
+            "skipResourceValidationForExemptions": false,
             "managedIdentityLocation": "eastus2",
             "globalNotScopes": [
                 "/providers/Microsoft.Management/managementGroups/mg-Epac-Dev"
@@ -84,15 +86,18 @@ EPAC has a concept of an environment identified by a string (unique per reposito
   - `pacSelector`: the logical name of the EPAC environment.
   - `cloud`: select cloud environments.
   - `tenantId`: enables multi-tenant scenarios.
-  - `deploymentRootScope`: the deployment scope for Policy and Policy Set definitions. Policy Assignments can only defined at this scope and child scopes (recursive).
+  - `deploymentRootScope`: the deployment scope for Policy and Policy Set definitions. Policy Assignments can only defined at this scope and child scopes (recursive). The format for each scope level is as follows:
+    - Management Group: `/providers/Microsoft.Management/managementGroups/{management-group-name}`
+    - Subscription: `/subscriptions/{subscription-id}`
+    - Resource Group: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}`
   - `desiredState`:  defines the desired state strategy.
     - `strategy`: see [Desired State Strategy](settings-desired-state.md).
     - `keepDfcSecurityAssignments`: see [Managing Defender for Cloud Policy Assignments](settings-dfc-assignments.md).
+    - `doNotDisableDeprecatedPolicies`: Automatically set deprecated policies' policy effect to "Disabled". This setting can be used to override that behavior by setting it to `true`. Default is `false`.
   - `managedIdentityLocation`: see [DeployIfNotExists and Modify Policy Assignments need `managedIdentityLocation`](#deployifnotexists-and-modify-policy-assignments-need-managedidentitylocation)
 - Optional:
   - `globalNotScopes`: see [Excluding scopes for all Assignments with `globalNotScopes`](#excluding-scopes-for-all-assignments-with-globalnotscopes)
   - `skipResourceValidationForExemptions`: disables checking the resource existence for Policy Exemptions. Default is false. This can be useful if you have a massive amount of exemptions and the validation is taking too long.
-  - `doNotDisableDeprecatedPolicies`: **NOT YET IMPLEMENTED**: Planed feature will automatically set effect for deprecated Policies to "Disabled" when using the CSV file. This setting can be used to override that behavior by setting it to `true`. Default is `false`.
   - `deployedBy`: populates the `metadata` fields. It defaults to `epac/$pacOwnerId/$pacSelector`. We recommend to use the default.
     - Policy Definitions, Policy Set Definitions and Policy Exemptions - `metadata.deployedBy`.
     - Policy Assignments - `metadata.assignedBy` since Azure Portal displays it as 'Assigned by'.
@@ -151,6 +156,7 @@ Resource Group patterns allow us to exclude "special" managed Resource Groups. T
                 "keepDfcSecurityAssignments": false,
                 "doNotDisableDeprecatedPolicies": false
             },
+            "skipResourceValidationForExemptions": false,
             "mangedIdentityLocation": "eastus2"
         },
         {
@@ -166,6 +172,7 @@ Resource Group patterns allow us to exclude "special" managed Resource Groups. T
             "globalNotScopes": [
                 "/providers/Microsoft.Management/managementGroups/PAC-Heinrich-Dev"
             ],
+            "skipResourceValidationForExemptions": false,
             "managedIdentityLocation": "eastus2"
         },
         {
@@ -185,6 +192,7 @@ Resource Group patterns allow us to exclude "special" managed Resource Groups. T
                 "keepDfcSecurityAssignments": false,
                 "doNotDisableDeprecatedPolicies": false
             },
+            "skipResourceValidationForExemptions": false,
             "managedIdentityLocation": "eastus2"
         }
     ]
